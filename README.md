@@ -1,5 +1,9 @@
 # Introduction
-COMSOL scripting on the cluster requires you to setup an MPH file short of solving it (including outputs). Just upload your data, scripts, and submission script (see comsol.sh for example) to the cluster, and submit with sbatch.
+COMSOL scripting on the cluster requires you to setup an MPH file short of solving it (including outputs). Just upload your data, scripts, and submission script (see comsol.sh for example) to the cluster, and submit with sbatch. To use the following example, run:
+```
+git clone https://github.com/uofm-research-computing/bigblue_comsol.git
+cd bigblue_comsol
+```
 
 # Submission
 The cylinder example provided can be copied with the following command on the cluster:
@@ -22,4 +26,4 @@ If your job takes too long or too much memory, you can use multiple nodes with c
 sbatch comsol_mpi.sh
 ```
 
-The difference between the multiple CPU-cores and MPI version in the submission script is using `--ntasks-per-node` and `--nodes` in place of `--cpus-per-task`. Also, `--mem-per-cpu` should be used in place of `--mem`. Additionally, the comsol command requires a few extra options such as `-mpibootstrap` and `-nnhost` to be set to "slurm" and "$SLURM_NTASKS_PER_NODE". `-batchlog` can optionally be set if you want to separate the bash and comsol output. See [Comsol knowledgebase article 1001](https://www.comsol.com/support/knowledgebase/1001) for more information.
+The difference between the multiple CPU-cores and MPI version in the submission script is using `--ntasks-per-node` and `--nodes` in place of `--cpus-per-task`. Also, `--mem-per-cpu` should be used in place of `--mem`. Additionally, the comsol command requires a few extra options such as `-mpibootstrap` and `-nnhost` to be set to "slurm" and "$SLURM_NTASKS_PER_NODE", respectively. `-batchlog` can optionally be set if you want to separate the bash and comsol output. See [Comsol knowledgebase article 1001](https://www.comsol.com/support/knowledgebase/1001) for more information.
